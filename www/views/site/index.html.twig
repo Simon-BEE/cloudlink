@@ -1,0 +1,103 @@
+{% extends '/layout/front.html.twig' %}
+
+{% block metaDescription %}La page d'accueil de mon site{% endblock %}
+{% block title %}{{title}}{% endblock %}
+
+{% block style %}{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <section class="left" id="left">
+            <div class="add" id="add">
+                <div class="plus close" id="addplus">+</div>
+                <div class="form" id="addform">
+                    <h2>Ajouter un lien</h2>
+                    <form action="" id="form-link">
+                        <div class="form-group">
+                            <label for="title">Nom du site</label>
+                            <input type="text" name="title" id="title" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="url">Url</label>
+                            <input type="url" name="url" id="url" required>
+                        </div>
+
+                        <div class="form-group col">
+                            <label for="description">Description du site</label>
+                            <textarea name="description" id="description" cols="30" rows="10"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="tag">Tag</label>
+                            <input type="tag" name="tag" id="tag" required>
+                        </div>
+
+                        <button type="button" id="btn-form" onclick="addLink()">Ajouter</button>
+                    </form>
+                </div>
+            </div>
+            <div class="title">
+                <p><i class="material-icons">cloud_circle</i></p>
+                <h1>Cloud<span class="bluelight">Link</span></h1>
+            </div>
+        </section>
+    
+        <section class="right" id="right">
+            <div class="btn"><div id="btn-move"><i id="arrow"  class="material-icons">double_arrow</i></div></div>
+
+            <div class="loading" id="loading">
+                <p><i class="material-icons">cloud_queue</i></p>
+                <p>Découvrez les derniers liens enregistrés</p>
+            </div>
+
+            <div class="content" id="content">
+
+                <div class="form seek" id="seek">
+                    <form action="">
+                        <div class="form-group">
+                            <input type="text" name="search" id="search" placeholder="Rechercher..." onkeyup="showResult(this.value)" required>
+                            <small>Minimum 3 caractères</small>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="wrap">
+                    <h2>Voici les liens récemment sauvegardés</h2>
+                    <div class="inside" id="inside">
+                        <ul id="lastlink">
+                        {% if lastLinks %}
+                                {% for link in lastLinks %}
+                                    <li>
+                                        <a href="{{link.url}}">{{ link.title }}</a>
+                                        {{link.description}}
+                                        <span class="tags">{{ link.tag }}</span>
+                                    </li>
+                                {% endfor %}
+                        {% else %}
+                            <p>Aucun lien pour le moment !</p> <i class="material-icons">mood</i>
+                        {% endif %}
+                        </ul>
+                    </div>
+                        {% if lastLinks %}<a href="/all" class="goall">&rarr;</a> {% endif %}
+                </div>
+
+                <div class="wrap result hidden" id="result">
+                    <div class="inside" id="inside2">
+                        <ul id="livesearch">
+                            
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+    </div>
+
+{% endblock %}
+
+{% block script %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+{% endblock %}

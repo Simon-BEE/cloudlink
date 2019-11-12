@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang='fr'>
+
+<head>
+	
+	<meta charset="utf-8">
+	<meta name="description" content="{% block metaDescription %}{% endblock %}" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>CloudLink - My favorites links || {% block title %}{% endblock %}</title>
+
+	<!-- UNCOMMENT if you want using FONTAWESOME
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">
+	-->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<!-- UNCOMMENT if you want using BOOTSTRAP
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+	-->
+	<link rel="stylesheet" type="text/css" href="/assets/styles/styles.css">
+	<!-- Ajouter des styles CSS supplémentaires -->
+	{% block style %}{% endblock %}
+</head>
+
+<body>
+	<header class="menu">
+		
+	</header>
+
+	<main class="body">
+		<!-- Affichage des messages flash -->
+		{# {% for success in flash("success") %}
+			<div class="" role="alert">
+				{{ success }}
+			</div>
+		{% endfor %}
+
+		{% for errors in flash("alert") %}
+			<div class="" role="alert">
+				{{ errors }}
+			</div>
+		{% endfor %} #}
+
+
+		{% block body %}
+
+		{% endblock %}
+	</main>
+	<footer>
+		
+		
+	</footer>
+	<!-- UNCOMMENT if you want using BOOTSTRAP
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	-->
+	<script type="text/javascript" src="/assets/js/script.js"></script>
+	<!-- Ajouter des scripts JS supplémentaires -->
+	{% block script %}{% endblock %}
+</body>
+
+</html>

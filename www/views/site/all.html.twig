@@ -1,0 +1,30 @@
+{% extends '/layout/front.html.twig' %}
+
+{% block metaDescription %}La page d'accueil de mon site{% endblock %}
+{% block title %}{{title}}{% endblock %}
+
+{% block style %}{% endblock %}
+
+{% block body %}
+
+    <div class="all">
+        <h2>Tous les liens enregistrés</h2>
+        <div class="content">
+            <ul>
+                {% for link in links %}
+                    <li>
+                        <a href="{{link.url}}">{{link.title}}</a>
+                        <p>{{link.description}}</p>
+                        <span>{{link.tag}}</span>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <p><a href="/" class="back">retour</a></p>
+    </div>
+
+{% endblock %}
+
+{% block script %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+{% endblock %}

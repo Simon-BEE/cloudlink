@@ -1,0 +1,79 @@
+#!/usr/bin/env php
+<?php declare(strict_types=1);
+
+if(php_sapi_name()!= "cli")
+{
+  fwrite(STDERR,
+  PHP_EOL."Fichier uniquement pour ligne de commande".PHP_EOL);
+  die(1);
+}
+
+require_once '/var/www/vendor/autoload.php';
+
+$dbname = getenv('MYSQL_DATABASE');
+$dbuser = getenv('MYSQL_USER');
+$dbpassword = getenv('MYSQL_PASSWORD');
+$dbcontainer = getenv('CONTAINER_MYSQL');
+
+$pdo = new PDO("mysql:host=$dbcontainer;dbname=$dbname", $dbuser, $dbpassword);
+
+/**
+* Suppression de table
+*/ 
+$pdo->exec('SET FOREIGN_KEY_CHECKS = 0');
+
+$pdo->exec('DROP TABLE site_content');
+$pdo->exec('DROP TABLE link');
+$pdo->exec('DROP TABLE user');
+
+$pdo->exec('SET FOREIGN_KEY_CHECKS = 1');
+
+/**
+ * creation tables
+ * 
+ */
+
+echo "[";
+$pdo->exec("CREATE TABLE site_content(
+  id INT(1) UNSIGNED NOT NULL AUTO_INCREMENT,
+  page VARCHAR(255) NOT NULL,
+  section VARCHAR(255) NOT NULL,
+  content LONGTEXT NOT NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT current_timestamp(),
+  updated_at TIMESTAMP NULL,
+  PRIMARY KEY(id)
+)");
+echo "||";
+
+$pdo->exec("CREATE TABLE user(
+  id INT(1) UNSIGNED NOT NULL AUTO_INCREMENT,
+  nickname VARCHAR(255) NOT NULL,
+  `password` VARCHAR(255) NOT NULL,
+  mail VARCHAR(255) NOT NULL,
+  token VARCHAR(255) NOT NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY(id)
+)");
+echo "||";
+
+$pdo->exec("CREATE TABLE link(
+  id INT(1) UNSIGNED NOT NULL AUTO_INCREMENT,
+  title VARCHAR(255) NOT NULL,
+  description LONGTEXT NULL,
+  `url` VARCHAR(255) NOT NULL,
+  `tag` VARCHAR(255) NOT NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY(id)
+)");
+echo "||";
+
+/**
+ * insertion tables
+ * 
+ */
+// $password = password_hash('Mdp7$!theli!', PASSWORD_BCRYPT);
+// $pdo->exec("INSERT INTO `user` (`nickname`, `password`, `mail`, `token`) VALUES (777, 'admin', '$password', 'admin@admin.com', 'c43!cked')");
+// echo "||";
+
+echo "||||]
+";

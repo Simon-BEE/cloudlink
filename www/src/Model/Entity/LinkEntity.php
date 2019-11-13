@@ -6,6 +6,8 @@ use Core\Model\Entity;
 class LinkEntity extends Entity
 {
     private $id;
+    private $user;
+    private $url;
     private $title;
     private $description;
     private $tag;
@@ -106,6 +108,46 @@ class LinkEntity extends Entity
     public function setCreatedAt($created_at)
     {
         $this->created_at = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of user
+     */ 
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set the value of user
+     *
+     * @return  self
+     */ 
+    public function setUser($user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of url
+     */ 
+    public function getUrl()
+    {
+        return $this->url;
+    }
+
+    /**
+     * Set the value of url
+     *
+     * @return  self
+     */ 
+    public function setUrl($url)
+    {
+        $this->url = $url;
 
         return $this;
     }

@@ -32,7 +32,7 @@ class AuthController extends Controller
             
             if (empty($errors)) {
                 $verifiedDatas = $this->verifDatas($datas);
-                $user = $this->user->verifyUser($verifiedDatas["username"], $verifiedDatas["password"]);
+                $user = $this->user->verifyUser(strtolower($verifiedDatas["username"]), $verifiedDatas["password"]);
                 if ($user) {
                     $this->flash()->addSuccess("Vous êtes bien connecté");
                     $_SESSION['auth'] = $user;
@@ -65,12 +65,12 @@ class AuthController extends Controller
             
             if (empty($errors)) {
                 $verifiedDatas = $this->verifDatas($datas);
+                $verifiedDatas["mail"] = strtolower($verifiedDatas["mail"]);
 
-                if ($this->user->find($verifiedDatas["mail"], "mail") || $this->user->find($verifiedDatas["nickname"], "nickname")) {
+                if ($this->user->find($verifiedDatas["mail"], "mail") || $this->user->find(strtolower($verifiedDatas["nickname"]), "nickname")) {
                     throw new \Exception("Les informations renseignées existent déjà dans nos fichiers");
                     exit();
                 }
-
                 $verifiedDatas["password"] = password_hash($verifiedDatas["password"], PASSWORD_BCRYPT);
                 $verifiedDatas["token"] = substr(md5(uniqid()), 10, 20);
                 

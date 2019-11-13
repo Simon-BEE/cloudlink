@@ -20,6 +20,7 @@ class SiteController extends Controller
         if (empty($_SESSION['auth'])) {
             $this->redirect('/login');
         }
+        //dd($this->link->find($this->link->last()));
         return $this->render('site/index', [
             'title' => '',
             'lastLinks' => $this->link->lastLink($_SESSION['auth']->getId())

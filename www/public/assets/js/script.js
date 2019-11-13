@@ -7,6 +7,7 @@ const content = document.getElementById("content");
 const inside = document.getElementById("inside");
 const button = document.getElementById("btn-form");
 const searchResult = document.getElementById("livesearch");
+const searchAllResult = document.getElementById("all");
 const lastLink = document.getElementById("lastlink");
 const searchBar = document.getElementById("search");
 const result = document.getElementById("result");
@@ -24,6 +25,30 @@ if (spanLinks) {
       console.log(link.textContent);
       showResult(link.textContent);
     });
+  }
+}
+
+function allSearch() {
+  let filter = searchBar.value.toUpperCase();
+  let li = searchAllResult.getElementsByTagName("li");
+
+  // Loop through all list items, and hide those who don't match the search query
+  for (let i = 0; i < li.length; i++) {
+    let a = li[i].getElementsByTagName("a")[0];
+    let p = li[i].getElementsByTagName("p")[0];
+    let tag = li[i].getElementsByClassName("tags")[0];
+    let aValue = a.textContent || a.innerText;
+    let pValue = p.textContent || p.innerText;
+    let tagValue = tag.textContent || tag.innerText;
+    if (
+      aValue.toUpperCase().indexOf(filter) > -1 ||
+      pValue.toUpperCase().indexOf(filter) > -1 ||
+      tagValue.toUpperCase().indexOf(filter) > -1
+    ) {
+      li[i].style.transform = "translateX(0)";
+    } else {
+      li[i].style.transform = "translate(1000vw)";
+    }
   }
 }
 
@@ -113,7 +138,9 @@ function addLink() {
     title.length > 2 &&
     url.length >= 5 &&
     description.length >= 10 &&
-    tag.length >= 3
+    description.length < 200 &&
+    tag.length >= 3 &&
+    tag.length < 20
   ) {
     $.post(
       "/newlink",
@@ -124,7 +151,8 @@ function addLink() {
           const resultat = JSON.parse(data);
 
           for (let [key, value] of Object.entries(resultat)) {
-            lastLink.innerHTML += `<li><a href="${value.url}">${value.title}</a>${value.description}<span class="tags" onclick="newSearch('${value.tag}')">${value.tag}</span></li>`;
+            console.log(value);
+            lastLink.innerHTML += `<li><a href="${value.url}" target="_blank">${value.title}</a>${value.description}<span class="tags" onclick="newSearch('${value.tag}')">${value.tag}</span></li>`;
           }
 
           document.getElementById("form-link").reset();
@@ -155,7 +183,7 @@ function deleteLink(id, user) {
           allDiv.innerHTML += `
             <li>
                 <span class="clear" onclick="deleteLink(${value.id}, ${value.user})"><i class="material-icons">cancel</i></span>
-                <a href="${value.url}">${value.title}</a>
+                <a href="${value.url}" target="_blank">${value.title}</a>
                 <p>${value.description}</p>
                 <span class="tags">${value.tag}</span>
             </li>`;
@@ -163,6 +191,7 @@ function deleteLink(id, user) {
       } else {
         window.location.replace("/");
       }
+      addAlert("success", "Lien supprimé");
     }
   });
 }

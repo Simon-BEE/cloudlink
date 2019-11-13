@@ -15,7 +15,7 @@
                     <h2>Ajouter un lien</h2>
                     <form action="" id="form-link">
                         <div class="form-group">
-                            <label for="title">Nom du site</label>
+                            <label for="title">Nom du lien</label>
                             <input type="text" name="title" id="title" required>
                         </div>
 
@@ -27,11 +27,13 @@
                         <div class="form-group col">
                             <label for="description">Description du site</label>
                             <textarea name="description" id="description" cols="30" rows="10"></textarea>
+                            <small>entre 10 et 200 caractères</small>
                         </div>
 
                         <div class="form-group">
                             <label for="tag">Tag</label>
                             <input type="tag" name="tag" id="tag" required>
+                            <small>entre 3 et 20 caractères</small>
                         </div>
 
                         <button type="button" id="btn-form" onclick="addLink()">Ajouter</button>
@@ -70,7 +72,7 @@
                         {% if lastLinks %}
                                 {% for link in lastLinks %}
                                     <li>
-                                        <a href="{{link.url}}">{{ link.title }}</a>
+                                        <a href="{{link.url}}" target="_blank">{{ link.title }}</a>
                                         {{link.description}}
                                         <span class="tags">{{ link.tag }}</span>
                                     </li>

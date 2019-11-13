@@ -20,7 +20,7 @@ class SearchController extends Controller
         $request = $_GET['search'];
 
         if (strlen($request) > 2) {
-            $result = $this->link->findLinkByWord($request, $_SESSION['auth']->getId());
+            $result = $this->link->findLinkByWord($request, (int)$_SESSION['auth']->getId());
             if ($result) {
                 $array = [];
                 foreach ($result as $value) {

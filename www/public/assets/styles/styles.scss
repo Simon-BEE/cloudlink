@@ -10,6 +10,7 @@ $bluelight: #81a6b5;
 }
 
 body{
+    @media screen and(max-width:767px){overflow-x: hidden;}
     position: relative;
     background-color: #fafafa;
     .container{
@@ -135,7 +136,8 @@ section.right{
         .seek{
             position: absolute;
             right: -20vw;
-            top: -10vh;
+            @media screen and(max-width:767px){right: -15vw;}
+            top: -15vh;
 
             #search{
             }
@@ -210,9 +212,14 @@ form{
         flex-direction: column;
         > *{margin-bottom: 7px;}
         input, textarea{
+            transition: .01s;
             border-radius: 5px;
             border: 1px solid #efefef;
             padding: 5px;
+            &:focus{
+                box-shadow: 0 0 10px rgba($bluedark, .2);
+                outline: none !important;
+            }
         }
 
         textarea{
@@ -236,6 +243,10 @@ form{
             background-color: #fafafa;
             color: $bluedark;
         }
+        &:focus{
+            box-shadow: 0 0 10px rgba($bluedark, .5);
+            outline: none !important;
+        }
     }
 }
 
@@ -246,6 +257,8 @@ form{
     width: 100vw;
     display: flex;flex-direction: column;align-items: center;justify-content: center;
     a{background-color: #fafafa;color: $bluelight;border-radius: 5px;padding: 5px;&.back{margin-bottom: 20px;}}
+    h2{margin-bottom: 15px;}
+    #seek{width: 130px;}
     .content{
         padding: 2%;
         border-radius: 5px;
@@ -257,6 +270,7 @@ form{
         align-items: center;
         justify-content: center;
         width: 50vw;
+        @media screen and(max-width:767px){width: 90vw;}
         min-height: 20vh;
         a{background-color: $bluemid;color: #fafafa;}
         ul{
@@ -287,6 +301,16 @@ form{
                     top: 5px;
                     i{font-size: 16px;}
                     &:hover{color:#ef5350;transition: .4s;}
+                }
+                .tags{
+                    position: absolute;
+                    bottom: -10px;
+                    left: -5px;
+                    padding: 5px;
+                    background-color: #ddd;
+                    color: $bluedark;
+                    border-radius: 5px;
+                    font-size: 13px;
                 }
             }
         }

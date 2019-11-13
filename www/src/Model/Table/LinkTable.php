@@ -5,9 +5,9 @@ use Core\Model\Table;
 
 class LinkTable extends Table
 {
-    public function findLinkByWord($string, $id)
+    public function findLinkByWord(string $string, int $id)
     {
-    return $this->query("SELECT * FROM {$this->table} WHERE title LIKE '%{$string}%' OR tag LIKE '%{$string}%' OR description LIKE '%{$string}%' AND WHERE `user` = {$id}");
+    return $this->query("SELECT * FROM {$this->table} WHERE title LIKE '%{$string}%' OR tag LIKE '%{$string}%' OR description LIKE '%{$string}%' AND `user` = {$id}");
     }
 
     public function lastLink($id)

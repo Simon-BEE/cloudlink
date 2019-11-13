@@ -9,12 +9,21 @@
 
     <div class="all">
         <h2>Tous les liens enregistrés</h2>
+
+        <div class="form seek" id="seek">
+            <form action="">
+                <div class="form-group">
+                    <input type="text" name="search" id="search" placeholder="Rechercher..." onkeyup="allSearch()" required>
+                </div>
+            </form>
+        </div>
+
         <div class="content">
             <ul id="all">
                 {% for link in links %}
                     <li>
                         <span class="clear" onclick="deleteLink({{link.id}}, {{auth.id}})"><i class="material-icons">cancel</i></span>
-                        <a href="{{link.url}}">{{link.title}}</a>
+                        <a href="{{link.url}}" target="_blank">{{link.title}}</a>
                         <p>{{link.description}}</p>
                         <span class="tags">{{link.tag}}</span>
                     </li>

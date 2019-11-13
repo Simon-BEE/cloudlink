@@ -46,8 +46,10 @@ function allSearch() {
       tagValue.toUpperCase().indexOf(filter) > -1
     ) {
       li[i].style.transform = "translateX(0)";
+      li[i].style.position = "relative";
     } else {
       li[i].style.transform = "translate(1000vw)";
+      li[i].style.position = "absolute";
     }
   }
 }
@@ -99,6 +101,7 @@ function showResult(str) {
   if (str.length <= 2) {
     if ($("#result h2")) {
       $("#result h2").remove();
+      $(".more").remove();
     }
     searchResult.innerHTML = "";
     if (!result.classList.contains("hidden")) {
@@ -112,6 +115,7 @@ function showResult(str) {
     if (data !== "error") {
       if ($("#result h2")) {
         $("#result h2").remove();
+        $(".more").remove();
         $("#result").prepend("<h2>Voici les liens recherchés</h2>");
       }
       searchResult.innerHTML = "";
@@ -119,6 +123,12 @@ function showResult(str) {
       for (let [key, value] of Object.entries(resultat)) {
         searchResult.innerHTML += `<li><a href="${value.url}">${value.title}</a>${value.description}<span class="tags" onclick="newSearch('${value.tag}')">${value.tag}</span></li>`;
         spanLinks = document.getElementsByClassName("tags");
+      }
+      if (resultat.length === 5) {
+        console.log("ici");
+        $("#result").append('<a href="/all" class="more">...</a>');
+      } else {
+        $(".more").remove();
       }
     } else {
       searchResult.innerHTML = `Aucun resultat`;

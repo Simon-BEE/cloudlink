@@ -197,6 +197,7 @@ section.right .content .wrap .inside ul#livesearch {
 }
 section.right .content .wrap .inside ul#livesearch li {
   margin: 0 10px 10px 10px;
+  width: 100%;
 }
 section.right .content .wrap .inside ul li {
   position: relative;
@@ -222,6 +223,13 @@ section.right .content .wrap .inside ul li span {
   border-radius: 5px;
   background-color: #307e99;
   color: #fafafa;
+}
+section.right .content .wrap .more {
+  color: #fafafa;
+  float: right;
+  margin-right: 10px;
+  text-decoration: none;
+  font-size: 20px;
 }
 section.right .content .wrap.result {
   transition: 0.5s;
@@ -291,6 +299,7 @@ form button:focus {
 }
 
 .all {
+  overflow-x: hidden;
   background-color: #263d63;
   color: #fafafa;
   min-height: 100vh;

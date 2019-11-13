@@ -153,7 +153,7 @@ section.right{
                     list-style: none;
                     &#livesearch{
                         display: flex;flex-wrap: wrap;
-                        li{margin: 0 10px 10px 10px;}
+                        li{margin: 0 10px 10px 10px;width: 100%;}
                     }
                     li{
                         position: relative;
@@ -178,6 +178,13 @@ section.right{
                         }
                     }
                 }
+            }
+            .more{
+                color: #fafafa;
+                float: right;
+                margin-right: 10px;
+                text-decoration: none;
+                font-size: 20px;
             }
             &.result{
                 transition: .5s;
@@ -251,6 +258,7 @@ form{
 }
 
 .all{
+    overflow-x: hidden;
     background-color: $bluedark;
     color: #fafafa;
     min-height: 100vh;

@@ -20,7 +20,7 @@ $app->getRouter($basePath)
 
     // AUTH routes
     ->match('/login', 'auth#signIn', 'signin')
-    ->match('/register', 'auth#signUp', 'signup')
+    //->match('/register', 'auth#signUp', 'signup')
     // ->match('/newpass', 'auth#newPassword', 'new_password')
     ->get('/logout', 'auth#logOut', 'logout')
     // ->get('/check/[*:token]-[i:id]', 'auth#confrmAccount', 'checking')

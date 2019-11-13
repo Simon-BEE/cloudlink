@@ -1,26 +1,21 @@
 {% extends '/layout/front.html.twig' %}
 
 {% block stylesheets %}
-	<!-- Google font -->
-	<link href="https://fonts.googleapis.com/css?family=Cabin:400,700" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Montserrat:900" rel="stylesheet">
 	<!-- Custom stlylesheet -->
-	<link type="text/css" rel="stylesheet" href="assets/styles/404.css" />
+	<link type="text/css" rel="stylesheet" href="assets/styles/styles.css" />
 {% endblock %}
 
 {% block title %}404 NOT FOUND{% endblock %}
 
 {% block body %}
-	<p>
+	<div class="found">
 		<a href="{{ uri('home') }}">Retourner à l'accueil</a>
-	</p>
-	<div id="notfound">
-		<div class="notfound">
-			<div class="notfound-404">
+		<div id="notfound">
+			<div class="notfound">
 				<h3>Oups! Page introuvable</h3>
 				<h1><span>4</span><span>0</span><span>4</span></h1>
+				<h2>Nous sommes désolés, la page demandée est inconnue de nos serveurs</h2>
 			</div>
-			<h2>Nous sommes désolés, la page demandée est inconnue de nos serveurs</h2>
 		</div>
 	</div>
 

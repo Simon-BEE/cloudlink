@@ -36,6 +36,7 @@ class App
             $whoops->register();
         }
         define('TVA', 1.2);
+        
         session_start();
         $numPage = URLController::getPositiveInt('page');
 

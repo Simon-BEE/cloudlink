@@ -5,13 +5,13 @@ use Core\Model\Table;
 
 class LinkTable extends Table
 {
-    public function findLinkByWord($string)
+    public function findLinkByWord($string, $id)
     {
-        return $this->query("SELECT * FROM {$this->table} WHERE title LIKE '%{$string}%' OR tag LIKE '%{$string}%' OR description LIKE '%{$string}%'");
+    return $this->query("SELECT * FROM {$this->table} WHERE title LIKE '%{$string}%' OR tag LIKE '%{$string}%' OR description LIKE '%{$string}%' AND WHERE `user` = {$id}");
     }
 
-    public function lastLink()
+    public function lastLink($id)
     {
-        return $this->query("SELECT * FROM {$this->table} ORDER BY id DESC LIMIT 3");
+        return $this->query("SELECT * FROM {$this->table} WHERE `user`= {$id} ORDER BY id DESC LIMIT 3");
     }
 }

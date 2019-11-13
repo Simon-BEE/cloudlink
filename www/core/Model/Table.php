@@ -52,9 +52,9 @@ abstract class Table
         return $this->query("SELECT MAX(id) as lastId FROM {$this->table}", null, true)->lastId;
     }
 
-    public function find($id, $column = 'id')
+    public function find($id, $column = 'id', $one = true)
     {
-        return $this->query("SELECT * FROM {$this->table} WHERE $column=?", [$id], true);
+        return $this->query("SELECT * FROM {$this->table} WHERE $column=?", [$id], $one);
     }
 
     public function all()

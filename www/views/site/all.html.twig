@@ -10,12 +10,13 @@
     <div class="all">
         <h2>Tous les liens enregistrés</h2>
         <div class="content">
-            <ul>
+            <ul id="all">
                 {% for link in links %}
                     <li>
+                        <span class="clear" onclick="deleteLink({{link.id}}, {{auth.id}})"><i class="material-icons">cancel</i></span>
                         <a href="{{link.url}}">{{link.title}}</a>
                         <p>{{link.description}}</p>
-                        <span>{{link.tag}}</span>
+                        <span class="tags">{{link.tag}}</span>
                     </li>
                 {% endfor %}
             </ul>

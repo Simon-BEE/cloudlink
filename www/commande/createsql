@@ -58,6 +58,7 @@ echo "||";
 
 $pdo->exec("CREATE TABLE link(
   id INT(1) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `user` INT(1) UNSIGNED NOT NULL,
   title VARCHAR(255) NOT NULL,
   description LONGTEXT NULL,
   `url` VARCHAR(255) NOT NULL,
@@ -71,9 +72,10 @@ echo "||";
  * insertion tables
  * 
  */
-// $password = password_hash('Mdp7$!theli!', PASSWORD_BCRYPT);
-// $pdo->exec("INSERT INTO `user` (`nickname`, `password`, `mail`, `token`) VALUES (777, 'admin', '$password', 'admin@admin.com', 'c43!cked')");
-// echo "||";
+$password = password_hash('123123123', PASSWORD_BCRYPT);
+$pdo->exec("INSERT INTO `user` (`nickname`, `password`, `mail`, `token`) VALUES ('admin', '$password', 'admin@admin.com', 'c43!cked')");
+$pdo->exec("INSERT INTO `user` (`nickname`, `password`, `mail`, `token`) VALUES ('test', '$password', 'test@test.com', 'c43!cked')");
+echo "||";
 
 echo "||||]
 ";

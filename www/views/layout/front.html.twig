@@ -27,18 +27,22 @@
 	</header>
 
 	<main class="body">
+		{% if auth %}<a class="connect" href="/logout"><i class="material-icons">exit_to_app</i></a>{% endif %}
+		
 		<!-- Affichage des messages flash -->
-		{# {% for success in flash("success") %}
-			<div class="" role="alert">
+		{% for success in flash("success") %}
+			<div class="alert success" role="alert">
+				<span class="closure" onclick="closeThis()">&times;</span>
 				{{ success }}
 			</div>
 		{% endfor %}
 
 		{% for errors in flash("alert") %}
-			<div class="" role="alert">
+			<div class="alert error" role="alert">
+				<span class="closure" onclick="closeThis()">&times;</span>
 				{{ errors }}
 			</div>
-		{% endfor %} #}
+		{% endfor %}
 
 
 		{% block body %}

@@ -1,0 +1,47 @@
+{% extends '/layout/front.html.twig' %}
+
+{% block metaDescription %}La page d'accueil de mon site{% endblock %}
+{% block title %}{{title}}{% endblock %}
+
+{% block style %}{% endblock %}
+
+{% block body %}
+
+    <div class="all">
+        <div class="content">
+            <div class="form log" id="addform">
+                <form action="" method="post" id="form-link">
+                    <div class="form-group">
+                        <label for="nickname">Identifiant</label>
+                        <input type="text" name="nickname" id="nickname" placeholder="Username" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mail">Adresse email</label>
+                        <input type="mail" name="mail" id="mail" placeholder="Mail address" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Mot de passe</label>
+                        <input type="password" name="password" id="password" placeholder="Password" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password_verify">Vérification mot de passe</label>
+                        <input type="password" name="password_verify" id="password_verify" placeholder="Password verify" required>
+                    </div>
+
+                    <button type="submit" id="btn-form">Connexion</button>
+                </form>
+            </div>
+        </div>
+        {# <small><a href="#">Pas encore inscrit ?</a> <a href="#">Mot de passe oublié ?</a></small> #}
+    </div>
+
+{% endblock %}
+
+{% block script %}
+    <script>
+        
+    </script>
+{% endblock %}

@@ -38,7 +38,7 @@ abstract class Controller
         if (is_null($this->twig)) {
             $loader = new \Twig\Loader\FilesystemLoader(dirname(dirname(__dir__)) . '/views/');
             $this->twig = new \Twig\Environment($loader);
-            $this->twig->addGlobal('session', $_SESSION);
+            $this->twig->addGlobal('auth', $_SESSION['auth']);
             $this->twig->addGlobal('constant', get_defined_constants());
             $this->twig->addExtension(new FlashExtension());
             $this->twig->addExtension(new URIExtension());

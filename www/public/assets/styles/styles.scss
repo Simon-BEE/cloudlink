@@ -20,6 +20,11 @@ body{
         @media screen and(max-width:767px){overflow: initial;}
     }
     .goall{color:#fafafa;text-decoration: none;}
+    .connect{
+        position: absolute;right: 5px;top:5px;z-index: 9;
+        color:#ef5350;
+        &:hover{color:#fafafa;transition: .3s;}
+    }
 }
 
 .bluelight{color:#81a6b5;}
@@ -190,6 +195,14 @@ section.right{
         }
     }
 }
+.form{
+    &.log{
+        width: 50%;
+        form{
+            button{float: right;}
+        }
+    }
+}
 
 form{
     .form-group{
@@ -256,16 +269,47 @@ form{
             justify-content: space-between;
             align-items: center;
             li{
+                position: relative;
                 background-color: $bluedark;
                 color: #fafafa;
-                min-width: 200px;
+                width: 200px;
                 min-height: 200px;
                 margin: 1%;
                 border-radius: 10px;
                 padding: 20px;
                 box-shadow: 0 0 5px rgba(#000, .2);
                 display: flex;flex-direction: column;align-items: center;justify-content: space-around;
+                .clear{
+                    transition: .2s;
+                    cursor: pointer;
+                    position: absolute;
+                    right: 5px;
+                    top: 5px;
+                    i{font-size: 16px;}
+                    &:hover{color:#ef5350;transition: .4s;}
+                }
             }
         }
     }
+}
+
+.alert{
+    z-index: 1000;
+    position: absolute;
+    width: 100vw;
+    padding: 20px 0;
+    top: 0;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(#000, .4);
+    color:#fafafa;
+    &.success{background-color: $bluemid;}
+    &.error{background-color: #ef5350;}
+}
+
+.closure{
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: -5px;
+    font-size: 25px;
 }

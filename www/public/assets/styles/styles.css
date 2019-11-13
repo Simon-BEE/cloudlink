@@ -26,6 +26,17 @@ body .goall {
   color: #fafafa;
   text-decoration: none;
 }
+body .connect {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  z-index: 9;
+  color: #ef5350;
+}
+body .connect:hover {
+  color: #fafafa;
+  transition: 0.3s;
+}
 
 .bluelight {
   color: #81a6b5;
@@ -218,6 +229,13 @@ section.right .content .form {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
+.form.log {
+  width: 50%;
+}
+.form.log form button {
+  float: right;
+}
+
 form .form-group {
   display: flex;
   flex-direction: column;
@@ -304,9 +322,10 @@ form button:hover {
   }
 }
 .all .content ul li {
+  position: relative;
   background-color: #263d63;
   color: #fafafa;
-  min-width: 200px;
+  width: 200px;
   min-height: 200px;
   margin: 1%;
   border-radius: 10px;
@@ -316,6 +335,45 @@ form button:hover {
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+}
+.all .content ul li .clear {
+  transition: 0.2s;
+  cursor: pointer;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+}
+.all .content ul li .clear i {
+  font-size: 16px;
+}
+.all .content ul li .clear:hover {
+  color: #ef5350;
+  transition: 0.4s;
+}
+
+.alert {
+  z-index: 1000;
+  position: absolute;
+  width: 100vw;
+  padding: 20px 0;
+  top: 0;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  color: #fafafa;
+}
+.alert.success {
+  background-color: #307e99;
+}
+.alert.error {
+  background-color: #ef5350;
+}
+
+.closure {
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+  top: -5px;
+  font-size: 25px;
 }
 
 /*# sourceMappingURL=styles.css.map */

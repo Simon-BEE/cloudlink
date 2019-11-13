@@ -17,9 +17,12 @@ class SiteController extends Controller
      */
     public function index()
     {
+        if (empty($_SESSION['auth'])) {
+            $this->redirect('/login');
+        }
         return $this->render('site/index', [
             'title' => '',
-            'lastLinks' => $this->link->lastLink()
+            'lastLinks' => $this->link->lastLink($_SESSION['auth']->getId())
         ]);
     }
 
@@ -28,9 +31,13 @@ class SiteController extends Controller
      */
     public function all()
     {
+        if (!$allLinks = $this->link->find($_SESSION['auth']->getId(), 'user', false)) {
+            $this->redirect();
+        }
+
         return $this->render('site/all', [
             'title' => '',
-            'links' => $this->link->all()
+            'links' => $allLinks
         ]);
     }
     

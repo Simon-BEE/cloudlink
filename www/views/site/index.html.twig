@@ -63,7 +63,7 @@
                     </form>
                 </div>
 
-                <div class="wrap">
+                <div class="wrap" id="wrap">
                     <h2>Voici les liens récemment sauvegardés</h2>
                     <div class="inside" id="inside">
                         <ul id="lastlink">
@@ -80,7 +80,7 @@
                         {% endif %}
                         </ul>
                     </div>
-                        {% if lastLinks %}<a href="/all" class="goall">&rarr;</a> {% endif %}
+                    {% if lastLinks %}<a href="/all" class="goall">&rarr;</a> {% endif %}
                 </div>
 
                 <div class="wrap result hidden" id="result">

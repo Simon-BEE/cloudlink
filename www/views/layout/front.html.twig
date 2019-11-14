@@ -5,9 +5,8 @@
 	
 	<meta charset="utf-8">
 	<meta name="description" content="{% block metaDescription %}{% endblock %}" />
-	<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0" />
-
-	<title>CloudLink - My favorites links || {% block title %}{% endblock %}</title>
+	<meta name="viewport" content="user-scalable=no, width=device-width, height=device-height, initial-scale=1.0" />
+	<title>CloudLink - My favorites links {% block title %}{% endblock %}</title>
 
 	<!-- UNCOMMENT if you want using FONTAWESOME
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">
@@ -19,12 +18,12 @@
 	<link rel="stylesheet" type="text/css" href="/assets/styles/styles.css">
 	<!-- Ajouter des styles CSS supplémentaires -->
 	{% block style %}{% endblock %}
+	<link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon">
+	<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16x16.png">
 </head>
 
 <body>
-	<header class="menu">
-		
-	</header>
 
 	<main class="body">
 		{% if auth %}<a class="connect" href="/logout"><i class="material-icons">exit_to_app</i></a>{% endif %}
@@ -57,6 +56,10 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
 	-->
+	<div class="cookies" id="cookie">
+        <span class="closure" id="cook">&times;</span>
+        <p>En utilisant ce site vous acceptez d'utiliser des cookies purement fonctionnels</p>
+    </div>
 	<script type="text/javascript" src="/assets/js/script.js"></script>
 	<!-- Ajouter des scripts JS supplémentaires -->
 	{% block script %}{% endblock %}

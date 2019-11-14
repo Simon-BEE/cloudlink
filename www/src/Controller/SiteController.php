@@ -17,10 +17,8 @@ class SiteController extends Controller
      */
     public function index()
     {
-        if (empty($_SESSION['auth'])) {
-            $this->redirect('/login');
-        }
-        //dd($this->link->find($this->link->last()));
+        $this->onlyUserAccess('/login');
+        
         return $this->render('site/index', [
             'title' => '',
             'lastLinks' => $this->link->lastLink($_SESSION['auth']->getId())
@@ -32,6 +30,8 @@ class SiteController extends Controller
      */
     public function all()
     {
+        $this->onlyUserAccess('/login');
+
         if (!$allLinks = $this->link->find($_SESSION['auth']->getId(), 'user', false)) {
             $this->redirect();
         }
@@ -48,35 +48,7 @@ class SiteController extends Controller
     public function notFound()
     {
         return $this->render('site/404', [
-            'title' => 'Erreur 404 - Page introuvable'
+            'title' => '- Erreur 404 - Page introuvable'
         ]);
     }
-        // private function authControl(){
-        //     $form = new FormController();
-        //         $form->field('username', ["require"])
-        //             ->field('password', ["require"]);
-        //         $errors =  $form->hasErrors();
-                
-        //         if (!isset($errors["post"])) {
-        //             $datas = $form->getDatas();
-                    
-        //             if (empty($errors)) {
-        //                 $verifiedDatas = $this->verifDatas($datas);
-        //                 $user = $this->user->verifyUser($verifiedDatas["username"], $verifiedDatas["password"]);
-        //                 if ($user) {
-        //                     if ($user->getToken() === 'c43!cked') {
-        //                         $this->flash()->addSuccess("Vous êtes bien connecté");
-        //                         $_SESSION['auth'] = $user;
-        //                         //$this->redirect('/profile');
-        //                     }else{
-        //                         $this->flash()->addAlert("Veuillez confirmer votre compte avant de vous connecter");
-        //                     }
-        //                 } else {
-        //                     $this->flash()->addAlert("L'adresse email et/ou le mot de passe est/son incorrect/s");
-        //                 }
-        //             } else {
-        //                 $this->flash()->addAlert("Veillez à remplir le formulaire correctement");
-        //             }
-        //         }
-        // }
-    }
+}

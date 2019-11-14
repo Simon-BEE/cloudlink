@@ -10,7 +10,7 @@ $bluelight: #81a6b5;
 }
 
 body{
-    @media screen and(max-width:767px){overflow-x: hidden;}
+    overflow-x: hidden;
     position: relative;
     background-color: #fafafa;
     .container{
@@ -20,7 +20,7 @@ body{
         overflow-x: hidden;
         @media screen and(max-width:767px){overflow: initial;}
     }
-    .goall{color:#fafafa;text-decoration: none;}
+    .goall{color:#fafafa;text-decoration: none;font-size: 20px;}
     .connect{
         position: absolute;right: 5px;top:5px;z-index: 9;
         color:#ef5350;
@@ -79,7 +79,7 @@ section.left{
         }
         .form{
             background-color: #fafafa;
-            transform: translateY(-100vh);
+            transform: translateY(-350vh);
             h2{margin-top: 20px;}
             &.clicked{
                 transform: translateY(0);
@@ -98,6 +98,8 @@ section.right{
 
     &.active{
         width: 100%;
+        @media screen and(max-width:768px){overflow-y: auto;padding: 170px 0 170px 55px;}
+        
     }
 
     .btn{
@@ -145,6 +147,7 @@ section.right{
 
         .wrap{
             width: 70%;
+            @media screen and(max-width:767px){width: 85%;}
             .inside{
                 display: flex;
                 align-items: center;
@@ -156,6 +159,7 @@ section.right{
                         li{margin: 0 10px 10px 10px;width: 100%;}
                     }
                     li{
+                        @media screen and(max-width:767px){width: 90%;}
                         position: relative;
                         padding: 20px;
                         background-color: #fafafa;
@@ -181,8 +185,6 @@ section.right{
             }
             .more{
                 color: #fafafa;
-                float: right;
-                margin-right: 10px;
                 text-decoration: none;
                 font-size: 20px;
             }
@@ -264,7 +266,8 @@ form{
     min-height: 100vh;
     width: 100vw;
     display: flex;flex-direction: column;align-items: center;justify-content: center;
-    a{background-color: #fafafa;color: $bluelight;border-radius: 5px;padding: 5px;&.back{margin-bottom: 20px;}}
+    a{background-color: #fafafa;color: $bluelight;border-radius: 5px;padding: 5px;}
+    p:last-child{margin-bottom: 20px;}
     h2{margin-bottom: 15px;}
     #seek{width: 130px;}
     .content{
@@ -286,15 +289,17 @@ form{
             height: 100%;
             list-style: none;
             display: flex;
-            @media screen and(max-width:767px){flex-direction: column;}
             flex-wrap: wrap;
+            @media screen and(max-width:767px){flex-direction: column; flex-wrap: nowrap;}
             justify-content: space-between;
             align-items: center;
             li{
+                transition: all 1.5s ease-in-out;
                 position: relative;
                 background-color: $bluedark;
                 color: #fafafa;
                 width: 200px;
+                @media screen and(max-width:767px){width: 100%;margin-bottom: 10px;}
                 min-height: 200px;
                 margin: 1%;
                 border-radius: 10px;
@@ -344,6 +349,10 @@ form{
     right: 10px;
     top: -5px;
     font-size: 25px;
+    &#cook{
+        right: 20px;
+        @media screen and(max-width:464px){top: 15px;}
+    }
 }
 
 .found{
@@ -375,5 +384,55 @@ form{
                 }
             }
         }
+    }
+}
+
+.cookies{
+    box-shadow: 0 0 10px rgba(0,0,0, .2);
+    transform: translateY(1000vh);
+    min-width: 100vw;
+    margin: 0 auto;
+    position: fixed;
+    padding: 5px 0;
+    bottom: 0;
+    border-radius: 10px 10px 0 0;
+    background-color: rgba(#000, .6);
+    color: #efefef;
+    text-align: center;
+}
+
+.cookies.show{
+    transform: translateY(0);
+    transition: .5s;
+}
+
+.info{
+    position: absolute;
+    left: 20px;
+    top: 10px;
+    button{
+        cursor: pointer;
+        outline: none;
+        border: none;
+        color: #fafafa;
+        background-color: rgba(#000, .4);
+        box-shadow: 0 0 10px rgba(0,0,0, .2);
+        padding: 5px 8px;
+        border-radius: 50%;
+        font-size: 15px;
+        &:hover{background-color: rgba(#fff, .4);}
+    }
+    .dropdown-content{
+        transform: translateY(-300vh);
+        padding: 10px;
+        border-radius: 5px;
+        text-align: center;
+        letter-spacing: 1px;
+        width: 300px;
+        @media screen and(max-width:768px){width: 270px;}
+        background-color: rgba(#000, .4);
+        color: #fafafa;
+        &.active{transform: translateY(0);}
+        a{color:#fafafa;}
     }
 }

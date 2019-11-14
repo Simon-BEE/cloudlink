@@ -22,7 +22,6 @@ if (spanLinks) {
   for (let link of spanLinks) {
     link.addEventListener("click", function() {
       searchBar.value = "";
-      console.log(link.textContent);
       showResult(link.textContent);
     });
   }
@@ -69,6 +68,9 @@ if (document.getElementById("btn-move")) {
       arrow.style.transform = "rotate(0deg)";
       loading.style.transform = "translateX(300vw)";
       content.style.transform = "translateY(0)";
+      if (window.matchMedia("screen and (max-width: 768px)").matches) {
+        content.style.position = "relative";
+      }
     } else {
       left.classList.remove("desactivate");
       right.classList.remove("active");
@@ -76,6 +78,9 @@ if (document.getElementById("btn-move")) {
       arrow.style.transform = "rotate(180deg)";
       loading.style.transform = "translateX(0)";
       content.style.transform = "translateY(-300vh)";
+      if (window.matchMedia("screen and (max-width: 768px)").matches) {
+        content.style.position = "absolute";
+      }
     }
   });
 }
@@ -97,7 +102,6 @@ if (addplus) {
 
 // Looking for a link
 function showResult(str) {
-  console.log(str);
   if (str.length <= 2) {
     if ($("#result h2")) {
       $("#result h2").remove();
@@ -125,8 +129,7 @@ function showResult(str) {
         spanLinks = document.getElementsByClassName("tags");
       }
       if (resultat.length === 5) {
-        console.log("ici");
-        $("#result").append('<a href="/all" class="more">...</a>');
+        $("#result").append('<a href="/all" class="more">&rarr;</a>');
       } else {
         $(".more").remove();
       }
@@ -161,7 +164,6 @@ function addLink() {
           const resultat = JSON.parse(data);
 
           for (let [key, value] of Object.entries(resultat)) {
-            console.log(value);
             lastLink.innerHTML += `<li><a href="${value.url}" target="_blank">${value.title}</a>${value.description}<span class="tags" onclick="newSearch('${value.tag}')">${value.tag}</span></li>`;
           }
 
@@ -234,3 +236,20 @@ function closeThis() {
 if (alertDiv) {
   setTimeout(closeThis, 2000);
 }
+
+if (localStorage.getItem("cookies") == null) {
+  setTimeout(function() {
+    document.getElementById("cookie").classList.toggle("show");
+  }, 5000);
+
+  document.getElementById("cook").addEventListener("click", function() {
+    document.getElementById("cookie").style.opacity = "0";
+    document.getElementById("cookie").style.display = "none";
+    localStorage.setItem("cookies", true);
+  });
+  //console.log(localStorage.getItem("cookies"));
+}
+
+const dropContent = () => {
+  document.getElementById("infocontent").classList.toggle("active");
+};

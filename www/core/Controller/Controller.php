@@ -130,10 +130,10 @@ abstract class Controller
      *
      * @return void
      */
-    protected function onlyUserAccess():void
+    protected function onlyUserAccess($path = '/'):void
     {
         if (!$_SESSION['auth']) {
-            $this->redirect();
+            $this->redirect($path);
         }
     }
 
@@ -182,5 +182,16 @@ abstract class Controller
             $verified[$key] = stripslashes($verified[$key]);
         }
         return $verified;
+    }
+
+    /**
+     * Verifie que l'accès à une méthode se fait bien par la méthode POST
+     */
+    protected function isPostMethod()
+    {
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            $this->flash()->addAlert('You can\'t access to this page !');
+            $this->redirect('/');
+        }
     }
 }

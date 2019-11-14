@@ -44,7 +44,7 @@ class AuthController extends Controller
                 $this->flash()->addAlert("Veillez à remplir le formulaire correctement");
             }
         }
-        return $this->render('auth/login', []);
+        return $this->render('auth/login', ['title' => '- Connexion']);
     }
 
     /**

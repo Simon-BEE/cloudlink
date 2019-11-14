@@ -8,13 +8,9 @@
 }
 
 body {
+  overflow-x: hidden;
   position: relative;
   background-color: #fafafa;
-}
-@media screen and (max-width: 767px) {
-  body {
-    overflow-x: hidden;
-  }
 }
 body .container {
   width: 100vw;
@@ -30,6 +26,7 @@ body .container {
 body .goall {
   color: #fafafa;
   text-decoration: none;
+  font-size: 20px;
 }
 body .connect {
   position: absolute;
@@ -102,7 +99,7 @@ section.left .add .plus:hover {
 }
 section.left .add .form {
   background-color: #fafafa;
-  transform: translateY(-100vh);
+  transform: translateY(-350vh);
 }
 section.left .add .form h2 {
   margin-top: 20px;
@@ -125,6 +122,12 @@ section.right {
 }
 section.right.active {
   width: 100%;
+}
+@media screen and (max-width: 768px) {
+  section.right.active {
+    overflow-y: auto;
+    padding: 170px 0 170px 55px;
+  }
 }
 section.right .btn {
   position: absolute;
@@ -183,6 +186,11 @@ section.right .content .seek {
 section.right .content .wrap {
   width: 70%;
 }
+@media screen and (max-width: 767px) {
+  section.right .content .wrap {
+    width: 85%;
+  }
+}
 section.right .content .wrap .inside {
   display: flex;
   align-items: center;
@@ -210,6 +218,11 @@ section.right .content .wrap .inside ul li {
   border-radius: 5px;
   margin-bottom: 10px;
 }
+@media screen and (max-width: 767px) {
+  section.right .content .wrap .inside ul li {
+    width: 90%;
+  }
+}
 section.right .content .wrap .inside ul li a {
   color: #81a6b5;
 }
@@ -226,8 +239,6 @@ section.right .content .wrap .inside ul li span {
 }
 section.right .content .wrap .more {
   color: #fafafa;
-  float: right;
-  margin-right: 10px;
   text-decoration: none;
   font-size: 20px;
 }
@@ -315,7 +326,7 @@ form button:focus {
   border-radius: 5px;
   padding: 5px;
 }
-.all a.back {
+.all p:last-child {
   margin-bottom: 20px;
 }
 .all h2 {
@@ -358,9 +369,11 @@ form button:focus {
 @media screen and (max-width: 767px) {
   .all .content ul {
     flex-direction: column;
+    flex-wrap: nowrap;
   }
 }
 .all .content ul li {
+  transition: all 1.5s ease-in-out;
   position: relative;
   background-color: #263d63;
   color: #fafafa;
@@ -374,6 +387,12 @@ form button:focus {
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+}
+@media screen and (max-width: 767px) {
+  .all .content ul li {
+    width: 100%;
+    margin-bottom: 10px;
+  }
 }
 .all .content ul li .clear {
   transition: 0.2s;
@@ -423,6 +442,14 @@ form button:focus {
   right: 10px;
   top: -5px;
   font-size: 25px;
+}
+.closure#cook {
+  right: 20px;
+}
+@media screen and (max-width: 464px) {
+  .closure#cook {
+    top: 15px;
+  }
 }
 
 .found {
@@ -478,6 +505,66 @@ form button:focus {
   color: #307e99;
 }
 .found .notfound h1 span:hover:nth-child(even) {
+  color: #fafafa;
+}
+
+.cookies {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  transform: translateY(1000vh);
+  min-width: 100vw;
+  margin: 0 auto;
+  position: fixed;
+  padding: 5px 0;
+  bottom: 0;
+  border-radius: 10px 10px 0 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #efefef;
+  text-align: center;
+}
+
+.cookies.show {
+  transform: translateY(0);
+  transition: 0.5s;
+}
+
+.info {
+  position: absolute;
+  left: 20px;
+  top: 10px;
+}
+.info button {
+  cursor: pointer;
+  outline: none;
+  border: none;
+  color: #fafafa;
+  background-color: rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  padding: 5px 8px;
+  border-radius: 50%;
+  font-size: 15px;
+}
+.info button:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+.info .dropdown-content {
+  transform: translateY(-300vh);
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  letter-spacing: 1px;
+  width: 300px;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: #fafafa;
+}
+@media screen and (max-width: 768px) {
+  .info .dropdown-content {
+    width: 270px;
+  }
+}
+.info .dropdown-content.active {
+  transform: translateY(0);
+}
+.info .dropdown-content a {
   color: #fafafa;
 }
 
